@@ -1,0 +1,18 @@
+---
+title: "Read Me"
+author: "Pramod Bhave"
+date: "Friday, February 20, 2015"
+output: html_document
+---
+
+Introduction
+
+This repo contains my course project to Coursera "Getting And Cleaning Data" course that is part of Data Science specialization.
+
+1. There is one script called run_analysis.R. 
+2. It contains all needed steps as needed as per project instructions
+3. It downloads the UCI HAR zip data files from the specified URL and unzips the data under folder "/WearData"
+4. It makes the necessary transformations and creates tidy data as spefied by the project instructions
+5. CodeBook.md explains the code for various steps in details
+6. To run this script, clone this repo and execute the script from prompt
+

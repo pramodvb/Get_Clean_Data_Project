@@ -1,0 +1,51 @@
+---
+title: "Code Book"
+author: "Pramod Bhave"
+date: "Friday, February 20, 2015"
+output: html_document
+---
+This document describes the code inside run_analysis.R.
+
+1. The code has self explainatory comments in clearly marked sections for every logical steps.
+2. It has following logical Steps
+
+## Step1: Downloading the data from the URL mentioned and unzipping data file into folder
+        WearData folder is creates at the path of working directory and data is unzipped
+        
+## Step2: Read Features data, Subject Data and Activity Data from the downloaded data
+        Feature data, Subject data and Activity data files are read from 'test' and 'train' subfolders
+
+## Setp3: Merging Data from Test and Train parts
+        Data observations in test and train are merged together for Features, Subject and Activity
+        Data frames are DT_Features, DT_Subject, DT_Activity
+        
+## Step5: Assigning column names to the Merged Data. For this Feature Names are read
+## Step6: Assigning Subject and Activity Columns to the Merged Data Set
+        Subject and Activity columns are bound to Merged Data set. The Data Frame after Step 5 and 6 looks like as below
+        head(DT_Features[, 1:5], n=3)
+          Activity Subject tBodyAcc-mean()-X tBodyAcc-mean()-Y tBodyAcc-mean()-Z
+        1        5       2         0.2571778       -0.02328523       -0.01465376
+        2        5       2         0.2860267       -0.01316336       -0.11908252
+        3        5       2         0.2754848       -0.02605042       -0.11815167        
+        
+## Step7: Selecting only Mean and Std variables from the Merged Data as per project instructions
+## Step8: Applying descriptive Activity names to the observations
+## Step9: Assigning descriptive variables names instead of abbreviations. The Data Frame after Steps 7,8 and 9 looks like as below
+        head(DT_Features[, 1:5], n=3)
+  Activity Subject timeBodyAccelerometer-mean()-X timeBodyAccelerometer-mean()-Y timeBodyAccelerometer-mean()-Z
+1 STANDING       2                      0.2571778                    -0.02328523                    -0.01465376
+2 STANDING       2                      0.2860267                    -0.01316336                    -0.11908252
+3 STANDING       2                      0.2754848                    -0.02605042                    -0.11815167
+
+## Step10: Creating 2nd Tidy data with mean values per subject and activity
+For this aggregate function is used. The Data Frame DT_Tidy2 is created after Step 10 and looks like, 
+        head(DT_Tidy2[, 1:5], n=3)
+Subject Activity timeBodyAccelerometer-mean()-X timeBodyAccelerometer-mean()-Y timeBodyAccelerometer-mean()-Z
+1       1   LAYING                      0.2215982                    -0.04051395                     -0.1132036
+2       2   LAYING                      0.2813734                    -0.01815874                     -0.1072456
+3       3   LAYING                      0.2755169                    -0.01895568                     -0.1013005
+
+## Step11: Copying tidy data created in above step for uploading to github for project submission
+The tidy data set is copied to tidydata.txt file using write.table command as follows.
+write.table(DT_Tidy2, file = "tidydata.txt",row.name=FALSE)
+
